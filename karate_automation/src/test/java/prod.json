@@ -1,0 +1,5 @@
+{
+  "pioneer_host": "<HOSTNAME>",
+  "root_user": "<ROOTUSER>",
+  "root_pswd": "<ROOTPASSWORD"
+}

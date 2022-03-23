@@ -1,0 +1,162 @@
+{
+  "configSchemaTest_01": {
+    "parameters": {
+        "workspace_id": {
+            "type": "string"
+        },
+        "workspace_name": {
+            "type": "string"
+        },
+        "workspace_iconURL": {
+            "type": "string"
+        },
+        "workspace_pictureURL": {
+            "type": "string"
+        },
+        "resourcesRestrictions_allowCamera": {
+            "type": "boolean",
+            "defaultValue": "no"
+        },
+        "resourcesRestrictions_allowMicrophone": {
+            "type": "boolean",
+            "defaultValue": "no"
+        },
+        "resourcesRestrictions_allowLocationAccess": {
+            "type": "boolean",
+            "defaultValue": "no"
+        },
+        "workspace_maxProjectsAllowed": {
+            "type": "string",
+            "defaultValue": "20"
+        },
+        "workspace_approvedApps": {
+            "type": "multiFile",
+            "file": {
+                "type": "webapps",
+                "maxSize": "10000"
+            }
+        },
+        "projects": {
+            "type": "collection",
+            "collectionSchema": {
+                "display": "vertical",
+                "uniqueConstraint": [
+                    "project_name"
+                ],
+                "parameterSubgroups": {
+                    "ProjectsTemplatesParamSettings": {
+                        "project_name": {
+                            "type": "string",
+                            "validation": "connnamevalidation"
+                        },
+                        "project_projectApps": {
+                            "type": "multiFile",
+                            "file": {
+                                "type": "webapps",
+                                "maxSize": "10000"
+                            }
+                        },
+                        "project_windowSize": {
+                            "type": "singleSelection",
+                            "defaultValue": "default",
+                            "possibleValues": [
+                                "default",
+                                "maximized",
+                                "640x480",
+                                "800x600",
+                                "1024x768",
+                                "1280x1024",
+                                "1600x1200",
+                                "1920x1080",
+                                "1920x1200"
+                            ]
+                        },
+                        "project_isolationLevel": {
+                            "type": "singleSelection",
+                            "defaultValue": "Native",
+                            "possibleValues": [
+                                "Native",
+                                "HardwareContainer",
+                                "SoftwareContainer"
+                            ]
+                        },
+                        "project_id": {
+                            "type": "string"
+                        },
+                        "project_iconURL": {
+                            "type": "string"
+                        },
+                        "project_pictureURL": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
+        "dataStore": {
+            "type": "singleFile",
+            "file": {
+                "type": "datastore",
+                "maxSize": "10000"
+            }
+        }
+    },
+    "parameterSubgroups": {
+        "Settings": {
+            "parameters": [
+                "workspace_id",
+                "workspace_name",
+                "workspace_iconURL",
+                "workspace_pictureURL",
+                "workspace_maxProjectsAllowed"
+            ]
+        },
+        "Projects": {
+            "parameters": [
+                "projects"
+            ]
+        },
+        "ApprovedApps": {
+            "parameters": [
+                "workspace_approvedApps"
+            ]
+        },
+        "DataStore": {
+            "parameters": [
+                "dataStore"
+            ]
+        },
+        "Restrictions": {
+            "parameters": [
+                "resourcesRestrictions_allowCamera",
+                "resourcesRestrictions_allowMicrophone",
+                "resourcesRestrictions_allowLocationAccess"
+            ]
+        }
+    },
+    "parameterGroups": {
+        "Workspace": {
+            "subgroups": [
+                "Settings",
+                "ApprovedApps",
+                "Restrictions",
+                "DataStore",
+                "Projects"
+            ]
+        }
+    },
+    "validation": {
+        "connnamevalidation": {
+            "regEx": "^[a-zA-Z0-9][A-Za-z0-9._-]{0,255}$"
+        }
+    },
+    "dependencies": {},
+    "settings": {
+        "Workspaces": {
+            "standard": [
+                "Workspace"
+            ]
+        }
+    }
+}
+}

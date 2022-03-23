@@ -1,0 +1,64 @@
+Feature: User Management Feature testing
+  
+  Background:  
+    * url api_server
+  
+  Scenario Outline:   As a <description>, I want to get the corresponding response_code <status_code>
+    * def randomString = callonce read('classpath:pioneer/reusable/_random_string.js')
+  
+    Given path '/api/user/register' 
+    And request {"user_id":<user_id>, "password":<password>}
+    And header transaction-id = 'test-' + randomString
+    When method post 
+    * print response
+    Then status <status_code>
+    
+    Examples:
+         |user_id                |password     | status_code   | description           |
+         |'demo_user1'           |'welcome'    | 200           | valid user            |
+         |'demo_user1'           |'welcome'    | 409           | duplicate user        |
+         |   null                |'welcome'    | 406           | without user id       |
+         |'demo_user2'           |   null      | 406           | without password      |
+
+# @tc_user1
+  # Scenario: get all users and then get the first user by id
+  #   Given path 'users'
+  #   When method get
+  #   Then status 200
+
+  #   * def first = response[0]
+
+  #   Given path 'users', first.id
+  #   When method get
+  #   Then status 200
+
+  # @tc_user2
+  # Scenario: create a user and then get it by id
+  #   * def user =
+  #     """
+  #     {
+  #       "name": "Test User",
+  #       "username": "testuser",
+  #       "email": "test@user.com",
+  #       "address": {
+  #         "street": "Has No Name",
+  #         "suite": "Apt. 123",
+  #         "city": "Electri",
+  #         "zipcode": "54321-6789"
+  #       }
+  #     }
+  #     """
+
+  #   Given url api_server_user
+  #   And request user
+  #   When method post
+  #   Then status 200
+
+  #   * def id = response.id
+  #   * print 'created id is: ', id
+
+  #   Given path id
+    # When method get
+    # Then status 200
+    # And match response contains user
+  

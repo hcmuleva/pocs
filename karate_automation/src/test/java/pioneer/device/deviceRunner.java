@@ -1,0 +1,11 @@
+package pioneer.tenants;
+
+import com.intuit.karate.junit5.Karate;
+
+class device {
+    @Karate.Test
+    Karate testTenants() {
+        return Karate.run("device").relativeTo(getClass());
+    }    
+
+}

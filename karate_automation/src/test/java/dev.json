@@ -1,0 +1,8 @@
+{
+  "pioneer_host": "<HOSTNAME>",
+  "root_user": "<ROOTUSER>",
+  "root_pswd": "<ROOTPASSWORD",
+  "api_server":"http://localhost:4000",
+  "api_server_user":"https://jsonplaceholder.typicode.com/users"
+
+}
