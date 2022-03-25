@@ -5,3 +5,4 @@ flask_bcrypt
 cryptography
 flask_cors
 flask_pymongo
+redis

@@ -1,0 +1,26 @@
+21:14:13.504 [main] INFO  com.intuit.karate.Runner - using system property 'karate.options': --tags @testrailid4
+21:14:14.000 [main] DEBUG com.intuit.karate.Suite - [config] classpath:karate-config.js
+21:14:16.085 [main] INFO  com.intuit.karate - karate.env system property was: null 
+21:14:17.060 [main] DEBUG com.intuit.karate - request:
+1 > GET http://localhost:8082/redis/keys
+1 > Host: localhost:8082
+1 > Connection: Keep-Alive
+1 > User-Agent: Apache-HttpClient/4.5.13 (Java/17.0.2)
+1 > Accept-Encoding: gzip,deflate
+
+
+21:14:17.171 [main] DEBUG com.intuit.karate - response time in milliseconds: 105
+1 < 201
+1 < Content-Type: application/json
+1 < Content-Length: 79
+1 < Access-Control-Allow-Origin: *
+1 < Server: Werkzeug/1.0.1 Python/3.9.5
+1 < Date: Fri, 25 Mar 2022 15:44:17 GMT
+{
+  "response": ",device value=WINDOW DEVICE ,device2 value=WINDOW DEVICE2 "
+}
+
+21:14:17.252 [main] INFO  com.intuit.karate - [print] {
+  "response": ",device value=WINDOW DEVICE ,device2 value=WINDOW DEVICE2 "
+}
+ 

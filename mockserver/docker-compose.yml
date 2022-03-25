@@ -4,16 +4,30 @@ services:
       image: mongo:latest
       hostname: mongodb
       environment:
-        - MONGO_INITDB_DATABASE=mockdb
         - MONGO_INITDB_ROOT_USERNAME=mongoadmin
         - MONGO_INITDB_ROOT_PASSWORD=secret
-     
+      volumes:
+      - './data:/data/db'
+      - ./docker-entrypoint-initdb.d/mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
       ports:
         - 27017:27017
-    
+    redis:
+      image: bitnami/redis:latest
+      hostname: redis
+      environment:
+        - ALLOW_EMPTY_PASSWORD=yes   
+      ports:
+        - 6379:6379
     mockapiserver:
-        image: mockapiserver:latest
+        image: hcmuleva/mockapiserver:latest
+        environment:
+          MONGODB_DATABASE: dmfdb
+          MONGODB_USERNAME: dmfuser
+          MONGODB_PASSWORD: dmfpassword
+          MONGODB_HOSTNAME: mongodb
+          REDIS_HOSTNAME: redis
         depends_on: 
             - mongodb
+            - redis
         ports:
-            - 8082:8082
+            - 8084:8084

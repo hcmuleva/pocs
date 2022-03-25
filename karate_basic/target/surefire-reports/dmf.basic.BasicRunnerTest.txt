@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: dmf.basic.BasicRunnerTest
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 6.685 s - in dmf.basic.BasicRunnerTest
